@@ -1,0 +1,189 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable */
+
+@layer base {
+  :root {
+    --background: 154 100% 98%;
+    --foreground: 154 42% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 154 42% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 154 42% 13%;
+    --primary: 100 100% 80%;
+    --primary-foreground: 154 42% 13%;
+    --secondary: 100 56% 92%;
+    --secondary-foreground: 154 42% 13%;
+    --muted: 154 5% 96%;
+    --muted-foreground: 154 4% 46%;
+    --accent: 100 100% 80%;
+    --accent-foreground: 154 42% 13%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 154 6% 90%;
+    --input: 154 6% 90%;
+    --ring: 154 42% 13%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 154 42% 13%;
+    --foreground: 154 5% 96%;
+    --card: 154 42% 13%;
+    --card-foreground: 154 5% 96%;
+    --popover: 154 42% 13%;
+    --popover-foreground: 154 5% 96%;
+    --primary: 100 100% 80%;
+    --primary-foreground: 154 42% 13%;
+    --secondary: 154 32% 18%;
+    --secondary-foreground: 154 5% 96%;
+    --muted: 154 32% 18%;
+    --muted-foreground: 154 4% 66%;
+    --accent: 100 100% 80%;
+    --accent-foreground: 154 42% 13%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 154 5% 96%;
+    --border: 154 32% 18%;
+    --input: 154 32% 18%;
+    --ring: 100 100% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-school-neon/10;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations */
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-in-out;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@layer components {
+  .section-spacing {
+    @apply py-16 md:py-24;
+  }
+
+  .content-container {
+    @apply container mx-auto px-6 md:px-8;
+  }
+
+  .glass-card {
+    @apply bg-school-dark/70 backdrop-blur-sm shadow-xl;
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: theme("colors.school.dark");
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: theme("colors.school.neon");
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.school.light");
+  }
+
+  .canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  /* Custom button styles */
+  .contact-submit-button {
+    background-color: #ccff99 !important;
+    color: #1a2721 !important;
+    border: none !important;
+  }
+
+  .contact-submit-button:hover {
+    background-color: #b8e589 !important;
+  }
+}
